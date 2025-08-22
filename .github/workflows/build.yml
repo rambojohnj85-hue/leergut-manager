@@ -33,7 +33,3 @@ jobs:
         with:
           name: windows-build
           path: dist/*.exe
-
-        with:
-          name: windows-build
-          path: dist/*.exe
