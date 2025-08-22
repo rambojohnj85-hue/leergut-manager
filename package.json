@@ -1,44 +1,39 @@
 {
   "name": "leergutmanager",
-  "version": "1.3.2",
-  "description": "Leergut Manager App",
-  "author": "Tobias Lohmann",
-  "main": "dist-electron/main.js",
+  "version": "1.3.3",
+  "main": "main.js",
+  "private": true,
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "postinstall": "electron-builder install-app-deps",
-    "electron:dev": "concurrently \"vite\" \"wait-on http://localhost:5173 && electron .\"",
+    "electron:dev": "concurrently \"npm run dev\" \"npm run start:electron\"",
+    "start:electron": "electron .",
     "electron:build": "electron-builder --win --x64 --publish never"
-  },
-  "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.2.1",
     "concurrently": "^8.2.2",
     "electron": "^28.3.3",
     "electron-builder": "^24.13.3",
-    "typescript": "^5.6.3",
-    "vite": "^5.4.10",
-    "wait-on": "^7.2.0"
+    "typescript": "^5.3.3",
+    "vite": "^5.2.0"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "build": {
-    "appId": "com.leergut.manager",
+    "appId": "com.leergutmanager.app",
     "files": [
-      "dist",
-      "dist-electron"
+      "dist/**",
+      "main.js",
+      "preload.js",
+      "package.json"
     ],
     "directories": {
       "buildResources": "assets",
       "output": "dist"
-    },
-    "win": {
-      "target": "nsis",
-      "icon": "assets/icon.ico"
-    },
-    "publish": null
+    }
   }
 }
