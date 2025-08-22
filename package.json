@@ -1,31 +1,25 @@
 {
   "name": "leergutmanager",
   "version": "1.2.0",
-  "private": true,
-  "type": "module",
-  "main": "electron/main.js",
+  "main": "dist-electron/main.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "electron:dev": "cross-env ELECTRON_START_URL=http://localhost:5173 electron .",
-    "electron:build": "electron-builder --win --x64 --publish never",
-    "start": "node electron/main.js"
-  },
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.25.1"
+    "electron:dev": "concurrently \"vite dev\" \"wait-on http://localhost:5173 && electron .\"",
+    "electron:build": "electron-builder --win --x64 --publish never"
   },
   "devDependencies": {
-    "@types/node": "^20.11.30",
-    "@types/react": "^18.2.66",
-    "@types/react-dom": "^18.2.22",
-    "@vitejs/plugin-react": "^4.2.0",
-    "cross-env": "^7.0.3",
     "electron": "^28.3.3",
     "electron-builder": "^24.13.3",
-    "typescript": "^5.4.5",
-    "vite": "^5.1.6"
+    "typescript": "^5.6.2",
+    "vite": "^5.4.10",
+    "@vitejs/plugin-react": "^4.3.1",
+    "concurrently": "^8.2.2",
+    "wait-on": "^7.2.0"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "build": {
     "appId": "com.leergut.manager",
@@ -34,21 +28,15 @@
       "output": "release"
     },
     "files": [
-      "build/**/*",
-      "electron/**/*",
-      "public/icon.png"
+      "dist",
+      "dist-electron"
     ],
     "extraMetadata": {
-      "main": "electron/main.js"
+      "main": "dist-electron/main.js"
     },
     "win": {
       "icon": "public/icon.png",
       "target": "nsis"
-    },
-    "nsis": {
-      "oneClick": true,
-      "perMachine": false
-    },
-    "publish": "never"
+    }
   }
 }
