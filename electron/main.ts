@@ -1,4 +1,3 @@
-
 import { app, BrowserWindow } from 'electron';
 import path from 'path';
 
@@ -7,12 +6,15 @@ function createWindow() {
     width: 1200,
     height: 800,
     webPreferences: {
-      nodeIntegration: true
-    },
-    icon: path.join(__dirname, '../build/icon.png')
+      preload: path.join(__dirname, 'preload.js')
+    }
   });
 
-  win.loadFile(path.join(__dirname, '../dist/index.html'));
+  if (process.env.VITE_DEV_SERVER_URL) {
+    win.loadURL(process.env.VITE_DEV_SERVER_URL);
+  } else {
+    win.loadFile(path.join(__dirname, '../dist/index.html'));
+  }
 }
 
 app.whenReady().then(() => {

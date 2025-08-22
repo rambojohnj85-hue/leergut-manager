@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-const App = () => <h1>Leergut Manager läuft 🚀</h1>;
+function App() {
+  return <h1>Leergut Manager 1.3.2</h1>;
+}
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
