@@ -1,39 +1,19 @@
 {
   "name": "leergutmanager",
-  "version": "1.3.3",
+  "version": "1.3.4",
+  "description": "Leergut Manager Desktop App",
+  "author": "Dein Name",
   "main": "main.js",
-  "private": true,
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "electron:dev": "concurrently \"npm run dev\" \"npm run start:electron\"",
-    "start:electron": "electron .",
+    "start": "electron .",
     "electron:build": "electron-builder --win --x64 --publish never"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^4.2.1",
-    "concurrently": "^8.2.2",
-    "electron": "^28.3.3",
-    "electron-builder": "^24.13.3",
-    "typescript": "^5.3.3",
-    "vite": "^5.2.0"
-  },
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-  "build": {
-    "appId": "com.leergutmanager.app",
-    "files": [
-      "dist/**",
-      "main.js",
-      "preload.js",
-      "package.json"
-    ],
-    "directories": {
-      "buildResources": "assets",
-      "output": "dist"
-    }
+    "vite": "^5.0.0",
+    "@vitejs/plugin-react": "^4.0.0",
+    "electron": "^28.0.0",
+    "electron-builder": "^24.13.3"
   }
 }

@@ -1,5 +1,5 @@
-const { contextBridge } = require("electron");
+const { contextBridge } = require('electron');
 
-contextBridge.exposeInMainWorld("electronAPI", {
-  ping: () => "pong"
+contextBridge.exposeInMainWorld('api', {
+  ping: () => 'pong'
 });
